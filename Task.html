@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DBP</title>    
+	<style>
+    button {
+      padding: 5px;
+      text-align: center;
+      display: inline-block;
+      margin: 10px 10px;
+      cursor: pointer;
+    }
+   </style>
+	<script>
+	document.addEventListener('DOMContentLoaded', () => 
+	{  
+	   document.querySelector('#new-task').onsubmit = () => 
+	   {
+	    const del = document.createElement('del');
+		const cb = document.createElement("INPUT");
+        const db = document.createElement("button");
+        //db.className
+		cb.setAttribute("type", "checkbox");
+        cb.setAttribute("id", "checkbox1");
+        db.setAttribute("id", "button1");
+        db.setAttribute("placeholder","X");
+		const li = document.createElement('li');
+		li.appendChild(cb);
+		li.innerHTML += document.querySelector('#task').value;
+        li.appendChild(db);
+        function borra()	{console.log("aaaaaa");}
+		//x=cb.getElementById("value");
+        //document.getElementById("button1").onclick = borra();//document.removeChild(li);
+		document.querySelector('#tasks').append(li);
+		document.querySelector('#task').value = '';
+		return false;
+		};
+        var list = document.querySelector('ol');
+		list.addEventListener('click', function(ev) 
+        {
+  		if (ev.target.tagName === 'BUTTON')
+        {alert("jodaaaa");
+        var a = document.getElementById("tasks");
+        var candidate = document.getElementById("checkbox1");
+        var item = document.getElementById(candidate.value);
+        a.removeChild(item);
+        ev.target.classList.toggle('checked');}
+        if (ev.target.tagName === 'INPUT')
+        {alert("no funca");
+        ev.target.classList.toggle('checked');}
+        }, false);
+	});
+	</script>
+  </head>
+<body>
+    <p>Computer Science</p>
+	<h1>Tasks</h1>
+	<form id="new-task">
+		<input id="task" autocomplete="off" autofocus placeholder="New Task" type="text">
+		<input type="submit">
+	</form>
+	<ol id="tasks">
+	</ol>
+</body>
+</html>
